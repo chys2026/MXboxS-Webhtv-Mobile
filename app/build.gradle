@@ -203,7 +203,7 @@ dependencies {
     annotationProcessor libs.eventbus.annotation.processor
     annotationProcessor libs.glide.compiler
     coreLibraryDesugaring libs.desugar
-    testLeanbackImplementation 'org.robolectric:robolectric:4.16'
+    testImplementation 'org.robolectric:robolectric:4.16'
     androidTestImplementation libs.junit
     androidTestImplementation libs.room.testing
     androidTestImplementation libs.work.testing
