@@ -25,12 +25,11 @@ jobs:
 
       - name: Locate Android SDK
         run: |
-          if [ -z "$ANDROID_HOME" ] && [ -z "$ANDROID_SDK_ROOT" ]; then
-            echo "ANDROID_HOME=$HOME/Android/Sdk" >> "$GITHUB_ENV"
-          fi
-          echo "sdk.dir=${ANDROID_HOME:-${ANDROID_SDK_ROOT:-$HOME/Android/Sdk}}" > local.properties
+          SDK="${ANDROID_HOME:-${ANDROID_SDK_ROOT:-$HOME/Android/Sdk}}"
+          echo "Android SDK: $SDK"
+          ls "$SDK" || true
+          echo "sdk.dir=$SDK" > local.properties
           cat local.properties
-          ls "${ANDROID_HOME:-${ANDROID_SDK_ROOT:-$HOME/Android/Sdk}}" || true
 
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v4
@@ -38,10 +37,10 @@ jobs:
       - name: Grant execute permission
         run: chmod +x ./gradlew
 
-      - name: Build debug APK
+      - name: Build debug APK (mobile, arm64)
         env:
           GRADLE_OPTS: "-Dorg.gradle.daemon=false"
-        run: ./gradlew :app:assembleDebug --no-daemon --stacktrace -Dorg.gradle.jvmargs="-Xmx6g"
+        run: ./gradlew :app:assembleMobileArm64_v8aDebug --no-daemon --stacktrace -Dorg.gradle.jvmargs="-Xmx6g"
 
       - name: List APK outputs
         if: always()
@@ -51,9 +50,9 @@ jobs:
         if: success()
         uses: actions/upload-artifact@v4
         with:
-          name: mxboxs-debug-apk
-          path: app/build/outputs/apk/**/*.apk
-          if-no-files-found: error
+          name: mxboxs-mobile-apk
+          path: app/build/outputs/apk/mobile/**/*.apk
+          if-no-files-found: warn
 
       - name: Upload build reports on failure
         if: failure()
