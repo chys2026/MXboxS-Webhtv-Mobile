@@ -23,13 +23,22 @@ jobs:
           java-version: '21'
           distribution: 'temurin'
 
-      - name: Locate Android SDK
+      - name: Set up Python 3.10 (chaquopy buildPython)
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Locate Android SDK and write local.properties
         run: |
           SDK="${ANDROID_HOME:-${ANDROID_SDK_ROOT:-$HOME/Android/Sdk}}"
           echo "Android SDK: $SDK"
           ls "$SDK" || true
-          echo "sdk.dir=$SDK" > local.properties
+          {
+            echo "sdk.dir=$SDK"
+            echo "chaquopyBuildPython=$(command -v python3.10 || command -v python3)"
+          } > local.properties
           cat local.properties
+          python3 --version
 
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v4
