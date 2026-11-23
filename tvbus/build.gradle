@@ -3,7 +3,7 @@ plugins {
 }
 
 android {
-    namespace = 'com.tvbus.engine'
+    namespace = 'com.tvbus.engine.mxboxs'
 
     compileSdk libs.versions.compileSdk.get().toInteger()
 
