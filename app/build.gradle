@@ -159,7 +159,8 @@ dependencies {
     implementation libs.simple.xml
     implementation libs.textdrawable
     implementation libs.tensorflow.lite
-    implementation libs.zxing.core    mobileImplementation libs.androidautosize
+    implementation libs.zxing.core
+    mobileImplementation libs.androidautosize
     mobileImplementation libs.zxing.android.embedded
     mobileImplementation libs.biometric
     testImplementation libs.junit
