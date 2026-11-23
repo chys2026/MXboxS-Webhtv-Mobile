@@ -1,4 +1,4 @@
-package com.fongmi.android.tv.bean;
+package com.silent.android.mxboxs.bean;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
