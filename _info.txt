@@ -1,0 +1,33 @@
+version: '1'
+names:
+  - name: mxboxs-webhtv-mobile
+    desc: |-
+      MXboxS + Webhtv 合成项目 - 仅手机版本
+      基于 webhtv 架构 + MXboxS 特色模块 (thunder/jianpian/zlive/tvbus/forcetech)
+      
+      Features:
+      - 现代化 Material 3 UI
+      - Thunder 迅雷下载
+      - Jianpian P2P 点播
+      - ZLive 直播解析
+      - TVBus 引擎
+      - ForceTech IPTV
+      
+      Supported Flavors:
+      - mobile (Android 手机版本)
+      
+      Min SDK: 21 (Android 5.0 Lollipop)
+      Target SDK: 34 (Android 14)
+      Compile SDK: 37
+      
+      Build Command:
+        ./gradlew assembleMobileDebug
+        ./gradlew assembleMobileRelease
+      
+      Author: silent
+      License: MIT/Apache-2.0
+      
+      Links:
+        source: https://github.com/[username]/MXboxS-Webhtv-Mobile
+        issue: https://github.com/[username]/MXboxS-Webhtv-Mobile/issues
+        wiki: https://github.com/[username]/MXboxS-Webhtv-Mobile/wiki

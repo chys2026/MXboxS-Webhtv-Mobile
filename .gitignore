@@ -1,0 +1,43 @@
+# Build outputs
+build/
+app/build/
+*/build/
+
+# Gradle cache
+.gradle/
+gradle-app.setting
+
+# Android Studio
+.idea/
+*.iml
+*.iws
+*.ipr
+.DS_Store
+
+# Local config (contains secrets)
+local.properties
+
+# Keystore files (signing keys - NEVER commit these!)
+*.jks
+*.keystore
+
+# Signed APK (optional, if you want to exclude from repo)
+# *.apk
+# app/release/*.apk
+
+# CMake/NDK
+**/.cxx/
+cmake/
+!CMakeLists.txt
+
+# Native libraries
+!**/*.so
+
+# ProGuard mappings
+proguardMapping.txt
+
+# Kotlin
+*.kotlin_module
+
+# MockMaker for Mockito
+mockito-extensions/

@@ -1,0 +1,6 @@
+## 此文件为签名配置示例，实际使用时需填写真实路径
+# sdk.dir=/path/to/android-sdk
+# storeFile=/path/to/keystore.jks
+# keyAlias=my-key
+# storePassword=your-store-password
+# keyPassword=your-key-password
