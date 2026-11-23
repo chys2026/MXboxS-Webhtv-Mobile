@@ -1,10 +1,12 @@
 pluginManagement {
     repositories {
-        gradlePluginPortal()
-        mavenCentral()
-        google()
-        maven { url = "https://maven.aliyun.com/repository/gradle-plugin" }
+        // 优先使用国内镜像
+        maven { url = "https://maven.aliyun.com/repository/google" }
         maven { url = "https://maven.aliyun.com/repository/public" }
+        maven { url = "https://maven.aliyun.com/repository/gradle-plugin" }
+        google()
+        mavenCentral()
+        gradlePluginPortal()
     }
 }
 
@@ -15,11 +17,12 @@ plugins {
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
-        maven { url = uri("$rootDir/third_party/maven") }
-        mavenCentral()
-        google()
-        maven { url = "https://maven.aliyun.com/repository/public" }
+        // 优先使用国内镜像
         maven { url = "https://maven.aliyun.com/repository/google" }
+        maven { url = "https://maven.aliyun.com/repository/public" }
+        maven { url = uri("$rootDir/third_party/maven") }
+        google()
+        mavenCentral()
         flatDir { dirs "$rootDir/app/libs" }
         maven { url = "https://jitpack.io" }
     }
