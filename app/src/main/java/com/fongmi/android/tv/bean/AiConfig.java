@@ -1,4 +1,4 @@
-package com.silent.android.mxboxs.bean;
+package com.fongmi.android.tv.bean;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
@@ -527,5 +527,90 @@ public class AiConfig {
 
     public static String[] systemGroupRulePromptsForCache() {
         return new String[]{DEFAULT_GROUP_RULE_PROMPT, LEGACY_GROUP_RULE_PROMPT_V1};
+    }
+
+    // ==================== MXboxS AI 智能设置统一入口 ====================
+    // 所有 AI 场景（推荐 / 标题解析 / 字幕翻译 / 广告识别 / 分组规则 / 看片报告 / 日志诊断）
+    // 共用这一份配置，做到「设置一次，全局生效」。
+
+    public static final String SCENE_RECOMMEND = "recommend";
+    public static final String SCENE_TITLE = "title-extraction";
+    public static final String SCENE_SUBTITLE = "subtitle-translation";
+    public static final String SCENE_AD = "ad-detection";
+    public static final String SCENE_GROUP_RULE = "group-rule";
+    public static final String SCENE_REPORT = "viewing-report";
+    public static final String SCENE_DIAGNOSIS = "log-diagnosis";
+
+    /** AI 是否已启用且配置完整，可直接用于各场景的开关前置判断。 */
+    public boolean isUsable() {
+        return isEnabled() && isReady();
+    }
+
+    /** 所有 AI 智能设置场景标识。 */
+    public static String[] scenes() {
+        return new String[]{SCENE_RECOMMEND, SCENE_TITLE, SCENE_SUBTITLE, SCENE_AD,
+                SCENE_GROUP_RULE, SCENE_REPORT, SCENE_DIAGNOSIS};
+    }
+
+    /** 场景中文名，用于 AI 设置页展示。 */
+    public static String sceneLabel(String scene) {
+        if (scene == null) return "";
+        switch (scene) {
+            case SCENE_RECOMMEND: return "智能推荐";
+            case SCENE_TITLE: return "标题解析";
+            case SCENE_SUBTITLE: return "字幕翻译";
+            case SCENE_AD: return "广告识别";
+            case SCENE_GROUP_RULE: return "分组规则";
+            case SCENE_REPORT: return "看片报告";
+            case SCENE_DIAGNOSIS: return "日志诊断";
+            default: return scene;
+        }
+    }
+
+    /** 该场景对应的自定义提示词；无独立提示词的场景返回空串。 */
+    public String promptFor(String scene) {
+        if (scene == null) return "";
+        switch (scene) {
+            case SCENE_RECOMMEND: return getRecommendPrompt();
+            case SCENE_TITLE: return getTitleExtractionPrompt();
+            case SCENE_AD: return getAdDetectionPrompt();
+            case SCENE_GROUP_RULE: return getGroupRulePrompt();
+            case SCENE_REPORT: return getViewingReportPrompt();
+            default: return "";
+        }
+    }
+
+    /** 该场景的提示词是否被用户自定义过。 */
+    public boolean isScenePromptCustom(String scene) {
+        if (scene == null) return false;
+        switch (scene) {
+            case SCENE_RECOMMEND: return isRecommendPromptCustom();
+            case SCENE_TITLE: return isTitleExtractionPromptCustom();
+            case SCENE_AD: return isAdDetectionPromptCustom();
+            case SCENE_GROUP_RULE: return isGroupRulePromptCustom();
+            case SCENE_REPORT: return isViewingReportPromptCustom();
+            default: return false;
+        }
+    }
+
+    /** 恢复该场景的默认提示词；不支持的场景静默忽略。 */
+    public void resetPromptFor(String scene) {
+        if (scene == null) return;
+        switch (scene) {
+            case SCENE_RECOMMEND: resetRecommendPrompt(); break;
+            case SCENE_TITLE: resetTitleExtractionPrompt(); break;
+            case SCENE_AD: resetAdDetectionPrompt(); break;
+            case SCENE_GROUP_RULE: resetGroupRulePrompt(); break;
+            case SCENE_REPORT: resetViewingReportPrompt(); break;
+            default: break;
+        }
+    }
+
+    /** 设置页摘要：协议 + 模型，未就绪时给出明确提示。 */
+    public String summary() {
+        if (!isEnabled()) return "AI 已关闭";
+        if (!isReady()) return "配置不完整";
+        String model = getModel();
+        return (model == null || model.isEmpty() ? DEFAULT_MODEL : model);
     }
 }
