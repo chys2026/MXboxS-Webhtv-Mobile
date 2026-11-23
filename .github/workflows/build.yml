@@ -60,8 +60,8 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: mxboxs-mobile-apk
-          path: app/build/outputs/apk/mobile/**/*.apk
-          if-no-files-found: warn
+          path: app/build/outputs/apk/mobile*/*/*.apk
+          if-no-files-found: error
 
       - name: Upload build reports on failure
         if: failure()
