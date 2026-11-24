@@ -1,6 +1,6 @@
 package com.fongmi.android.tv.service;
 
-import com.fongmi.android.tv.bean.AiConfig;
+import com.silent.android.mxboxs.bean.AiConfig;
 import com.fongmi.android.tv.setting.Setting;
 import com.github.catvod.crawler.SpiderDebug;
 
