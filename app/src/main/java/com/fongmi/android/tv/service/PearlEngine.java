@@ -1,7 +1,7 @@
-package com.fongmi.android.tv.service;
+package com.silent.android.mxboxs.service;
 
 import com.silent.android.mxboxs.bean.AiConfig;
-import com.fongmi.android.tv.setting.Setting;
+import com.silent.android.mxboxs.setting.Setting;
 import com.github.catvod.crawler.SpiderDebug;
 
 import java.util.ArrayList;
@@ -128,12 +128,12 @@ public final class PearlEngine {
     }
 
     /** 连接测试，供设置页直接调用。 */
-    public static AiCompletionClient.TestResult test(AiConfig config) {
+    public static com.silent.android.mxboxs.service.AiCompletionClient.TestResult test(AiConfig config) {
         return AiCompletionClient.testConfig(config == null ? config() : config);
     }
 
     /** 拉取可用模型列表，供设置页下拉选择。 */
-    public static AiCompletionClient.ModelFetchResult fetchModels(AiConfig config) {
+    public static com.silent.android.mxboxs.service.AiCompletionClient.ModelFetchResult fetchModels(AiConfig config) {
         return AiCompletionClient.fetchModels(config == null ? config() : config);
     }
 
