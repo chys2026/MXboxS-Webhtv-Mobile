@@ -201,10 +201,10 @@
     <string name="setting_subtitle">Subtitle setting</string>
     <string name="setting_enhance">Enhancements</string>
     <string name="setting_tmdb">TMDB</string>
-    <string name="setting_ai">AI services</string>
-    <string name="setting_ai_group_recommendation">Recommendations</string>
-    <string name="setting_ai_group_detection">Content detection</string>
-    <string name="setting_ai_group_subtitle">Subtitles</string>
+    <string name="setting_ai">Pearl Engine</string>
+    <string name="setting_ai_group_recommendation">Insight</string>
+    <string name="setting_ai_group_detection">Recognition</string>
+    <string name="setting_ai_group_subtitle">Caption</string>
     <string name="setting_personal">Personal</string>
     <string name="setting_group_rule">Group rules</string>
     <string name="setting_group_rule_summary">Enabled %1$d / %2$d</string>
@@ -2200,7 +2200,7 @@
     <string name="select_secondary_subtitle_track">Select secondary subtitle</string>
 
     <string name="setting_tmdb_source">TMDB data config</string>
-    <string name="setting_ai_recommendation">AI configuration</string>
+    <string name="setting_ai_recommendation">Pearl configuration</string>
     <string name="setting_tmdb_match_mode">TMDB match mode</string>
     <string name="setting_detail_open_mode">Detail page mode</string>
     <string name="setting_detail_open_original">Original detail</string>
@@ -2500,7 +2500,7 @@
     <string name="viewing_report_badges">🏆 Achievements</string>
 
     <!-- AI 智能去广 -->
-    <string name="setting_ai_ad_detection">AI ad detection</string>
+    <string name="setting_ai_ad_detection">Pearl ad detection</string>
     <string name="setting_ad_rule_manage">Ad rule manager</string>
     <string name="ad_rule_add_manual">Add rule manually</string>
     <string name="ad_rule_import_candidates">Source rules pending review (%d)</string>
