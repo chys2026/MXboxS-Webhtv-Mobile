@@ -1,13 +1,13 @@
-package com.fongmi.android.tv.setting;
+package com.silent.android.mxboxs.setting;
 
 import android.content.Intent;
 import android.provider.Settings;
 
-import com.fongmi.android.tv.App;
-import com.fongmi.android.tv.R;
-import com.fongmi.android.tv.player.VideoAspectMode;
-import com.fongmi.android.tv.utils.BrightnessPolicy;
-import com.fongmi.android.tv.utils.Util;
+import com.silent.android.mxboxs.App;
+import com.silent.android.mxboxs.R;
+import com.silent.android.mxboxs.player.VideoAspectMode;
+import com.silent.android.mxboxs.utils.BrightnessPolicy;
+import com.silent.android.mxboxs.utils.Util;
 import com.github.catvod.utils.Prefers;
 
 public class PlayerSetting {
@@ -16,11 +16,11 @@ public class PlayerSetting {
     public static final int IJK = 1;
     public static final int SYSTEM = 2;
     public static final int MPV = 3;
-    /** 阿里云播放器（AliPlayer）。4 号位是新增内核位，不打乱前四个持久化值。 */
+    /** 阿里云播放器（AliPlayer）。4 号位是新增内核位，不打乱前四个已持久化的值。 */
     public static final int ALI = 4;
     public static final int NONE = -1;
     /**
-     * 内核优先级顺序：EXO → IJK → MPV → 系统 → 阿里。下标是位次，元素是内核常量。
+     * 内核优先级顺序：EXO → IJK → MPV → 系统。下标是位次，元素是内核常量。
      * 常量数值本身是持久化值（也是 select_player_kernel 等数组的下标），不能重排，
      * 所以顺序只在这张表里表达：选择菜单按它排列，播放失败的内核回退也按它推进。
      */
@@ -201,12 +201,12 @@ public class PlayerSetting {
     }
 
     /**
-     * 阿里播放器是否已集成：只有把 {@code AliPlayerEngine} 补进工程、并且 AAR 与
-     * License 就绪后才返回 true。未集成时菜单里会跳过它，不会让用户选到一个空白内核。
+     * 阿里播放器是否已集成：只有把 AliPlayerEngine 补进工程、并且 AAR 与 License
+     * 就绪后才返回 true。未集成时菜单会跳过它，不会让用户选中一个空白内核。
      */
     public static boolean isAliAvailable() {
         try {
-            Class.forName("com.fongmi.android.tv.player.engine.AliPlayerEngine");
+            Class.forName("com.silent.android.mxboxs.player.engine.AliPlayerEngine");
             return true;
         } catch (Throwable e) {
             return false;
@@ -243,15 +243,13 @@ public class PlayerSetting {
         return rank >= 0 && rank < KERNEL_ORDER.length ? KERNEL_ORDER[rank] : EXO;
     }
 
-    /** 按优先级顺序把标签数组重排成菜单顺序，入参下标是内核常量。 */
+    /** 按优先级顺序把标签数组重排成菜单顺序，入参下标是内核常量。顺序表与数组必须同步扩充，否则位次会错。 */
     public static String[] orderKernels(String[] labels) {
         if (labels == null) return new String[0];
         String[] ordered = new String[KERNEL_ORDER.length];
         for (int i = 0; i < KERNEL_ORDER.length; i++) {
             int kernel = KERNEL_ORDER[i];
-            // 未集成的内核（例如拿不到 AliPlayer AAR 时的阿里内核）留空标签，
-            // 由 UI 侧过滤掉，避免用户选中后落到一个没有实现的引擎上。
-            ordered[i] = kernel < labels.length && isPlayerAvailable(kernel) ? labels[kernel] : "";
+            ordered[i] = kernel < labels.length ? labels[kernel] : "";
         }
         return ordered;
     }
