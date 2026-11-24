@@ -197,10 +197,10 @@
     <string name="setting_subtitle">字幕设置</string>
     <string name="setting_enhance">增强功能</string>
     <string name="setting_tmdb">TMDB</string>
-    <string name="setting_ai">AI 服务</string>
-    <string name="setting_ai_group_recommendation">推荐</string>
-    <string name="setting_ai_group_detection">内容识别</string>
-    <string name="setting_ai_group_subtitle">字幕</string>
+    <string name="setting_ai">智能引擎</string>
+    <string name="setting_ai_group_recommendation">智能推荐</string>
+    <string name="setting_ai_group_detection">智能识别</string>
+    <string name="setting_ai_group_subtitle">智能字幕</string>
     <string name="setting_personal">个性设置</string>
     <string name="setting_group_rule">分组规则</string>
     <string name="setting_group_rule_summary">已启用 %1$d / %2$d</string>
@@ -2148,7 +2148,7 @@
     <string name="select_secondary_subtitle_track">选择第二字幕</string>
 
     <string name="setting_tmdb_source">TMDB 数据配置</string>
-    <string name="setting_ai_recommendation">AI 通用配置</string>
+    <string name="setting_ai_recommendation">引擎配置</string>
     <string name="setting_tmdb_match_mode">TMDB 匹配模式</string>
     <string name="setting_detail_open_mode">详情页模式</string>
     <string name="setting_detail_open_original">原始详情</string>
@@ -2832,7 +2832,7 @@
     <string name="dialog_short_drama_add_hint">添加关键词或站点…</string>
     <string name="dialog_short_drama_add">添加</string>
     <string name="viewing_report_refreshing">刷新报告中...</string>
-    <string name="setting_ai_ad_detection">AI 智能去广</string>
+    <string name="setting_ai_ad_detection">智能去广</string>
     <string name="setting_ad_rule_manage">广告规则管理</string>
     <string name="ad_rule_add_manual">手动添加规则</string>
     <string name="ad_rule_import_candidates">待审核接口规则（%d）</string>
