@@ -1,7 +1,7 @@
 <resources xmlns:xliff="http://schemas.android.com/apk/res-auto">
 
     <!-- App -->
-    <string name="app_name">默影視</string>
+    <string name="app_name">MXboxS TV</string>
    <string name="setting_app_branding">APP 圖示</string>
     <string name="app_branding_icon_current">預設圖示</string>
     <string name="app_branding_icon_history">原始圖示</string>
@@ -197,7 +197,7 @@
     <string name="setting_subtitle">字幕設定</string>
     <string name="setting_enhance">增強功能</string>
     <string name="setting_tmdb">TMDB</string>
-    <string name="setting_ai">AI 服務</string>
+    <string name="setting_ai">智能引擎</string>
     <string name="setting_ai_group_recommendation">推薦</string>
     <string name="setting_ai_group_detection">內容識別</string>
     <string name="setting_ai_group_subtitle">字幕</string>
@@ -1853,6 +1853,7 @@
         <item>IJK</item>
         <item>系統</item>
         <item>MPV</item>
+        <item>阿里</item>
     </string-array>
     <string-array name="select_mpv_render">
         <item>OpenGL</item>
@@ -2006,7 +2007,7 @@
     <string name="select_secondary_subtitle_track">選擇第二字幕</string>
 
     <string name="setting_tmdb_source">TMDB 數據配置</string>
-    <string name="setting_ai_recommendation">AI 通用配置</string>
+    <string name="setting_ai_recommendation">引擎配置</string>
     <string name="setting_tmdb_match_mode">TMDB 匹配模式</string>
     <string name="setting_detail_open_mode">詳情頁模式</string>
     <string name="setting_detail_open_original">原始詳情</string>
@@ -2776,7 +2777,7 @@
     <string name="search_filter_empty_exact">暫無精確匹配結果，可降低相似度查看更多</string>
     <string name="detail_site_not_searchable">當前站源不支持搜索</string>
     <string name="viewing_report_refreshing">刷新報告中...</string>
-    <string name="setting_ai_ad_detection">AI 智能去廣</string>
+    <string name="setting_ai_ad_detection">智能去廣</string>
     <string name="setting_ad_rule_manage">廣告規則管理</string>
     <string name="ad_rule_add_manual">手動添加規則</string>
     <string name="ad_rule_import_candidates">待審核接口規則（%d）</string>
