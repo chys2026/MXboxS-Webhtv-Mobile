@@ -19,16 +19,16 @@ import java.util.List;
 /**
  * 阿里云播放器（AliPlayer）内核。
  * <p>
- * 这是新项目里第 5 个播放内核，接在 {@code PlayerSetting.KERNEL_ORDER} 末尾，
+ * 新项目里的第 5 个播放内核，接在 {@code PlayerSetting.KERNEL_ORDER} 末尾，
  * 由 {@code PlayerManager#buildEngine} 按 {@code PlayerSetting.ALI} 分发进来。
  * <p>
  * <b>当前状态</b>：引擎骨架已完整接入（生命周期、解码切换、错误上报、链路日志），
- * 底层播放能力暂时复用系统 MediaPlayer 的实现载体 {@link SystemSimplePlayer}，
- * 因此即使 AliPlayer 的 AAR 还没进工程，这个内核也能正常工作、不会崩。
+ * 底层播放载体复用系统内核的 {@link SystemSimplePlayer}，所以即便 AliPlayer 的 AAR
+ * 还没进工程，这个内核也能正常播放、不会崩。
  * <p>
- * <b>接上官方 SDK 后</b>，只要把 {@link #buildPlayer(Player.Listener)} 里换成
- * AliPlayer 的适配实现即可，其余代码不需要改动；同时在 {@code app/libs} 放入
- * AliPlayer 的 AAR、并补上 LicenseManager 的 AK 初始化。
+ * <b>接上官方 SDK 后</b>：只需把 {@link #buildPlayer(Player.Listener)} 换成 AliPlayer
+ * 的适配实现，其余代码不用动；同时在 {@code app/libs} 放入 AliPlayer AAR，
+ * 并补上 LicenseManager 的 AK 初始化。
  */
 @UnstableApi
 public class AliPlayerEngine implements PlayerEngine {
@@ -38,8 +38,8 @@ public class AliPlayerEngine implements PlayerEngine {
     private int decode;
 
     public AliPlayerEngine(int decode, Player.Listener listener) {
-        this.player = buildPlayer(listener);
         this.decode = decode;
+        this.player = buildPlayer(listener);
     }
 
     @Override
@@ -150,8 +150,8 @@ public class AliPlayerEngine implements PlayerEngine {
     }
 
     /**
-     * 播放器实例工厂。接入阿里官方 SDK 时，把这里换成 AliPlayer 的适配实现，
-     * 并保证返回值仍满足 {@link Player}（media3）契约；其余分支无需改动。
+     * 播放器实例工厂。接入阿里官方 SDK 时把这里换成 AliPlayer 的适配实现即可，
+     * 必须保证返回值仍满足 media3 的 {@link Player} 契约，其余代码无需改动。
      */
     private SystemSimplePlayer buildPlayer(Player.Listener listener) {
         SystemSimplePlayer player = new SystemSimplePlayer();
