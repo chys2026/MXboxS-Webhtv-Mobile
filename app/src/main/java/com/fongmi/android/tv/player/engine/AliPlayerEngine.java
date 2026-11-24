@@ -1,4 +1,4 @@
-package com.fongmi.android.tv.player.engine;
+package com.silent.android.mxboxs.player.engine;
 
 import androidx.media3.common.C;
 import androidx.media3.common.MediaItem;
@@ -8,10 +8,10 @@ import androidx.media3.common.Player;
 import androidx.media3.common.Tracks;
 import androidx.media3.common.util.UnstableApi;
 
-import com.fongmi.android.tv.R;
-import com.fongmi.android.tv.bean.Track;
-import com.fongmi.android.tv.player.exo.ExoUtil;
-import com.fongmi.android.tv.utils.ResUtil;
+import com.silent.android.mxboxs.R;
+import com.silent.android.mxboxs.bean.Track;
+import com.silent.android.mxboxs.player.exo.ExoUtil;
+import com.silent.android.mxboxs.utils.ResUtil;
 import com.github.catvod.crawler.SpiderDebug;
 
 import java.util.List;
@@ -22,13 +22,13 @@ import java.util.List;
  * 新项目里的第 5 个播放内核，接在 {@code PlayerSetting.KERNEL_ORDER} 末尾，
  * 由 {@code PlayerManager#buildEngine} 按 {@code PlayerSetting.ALI} 分发进来。
  * <p>
- * <b>当前状态</b>：引擎骨架已完整接入（生命周期、解码切换、错误上报、链路日志），
+ * 当前状态：引擎骨架已完整接入（生命周期、解码切换、错误上报、链路日志），
  * 底层播放载体复用系统内核的 {@link SystemSimplePlayer}，所以即便 AliPlayer 的 AAR
  * 还没进工程，这个内核也能正常播放、不会崩。
  * <p>
- * <b>接上官方 SDK 后</b>：只需把 {@link #buildPlayer(Player.Listener)} 换成 AliPlayer
- * 的适配实现，其余代码不用动；同时在 {@code app/libs} 放入 AliPlayer AAR，
- * 并补上 LicenseManager 的 AK 初始化。
+ * 接上官方 SDK 后：只需把 {@link #buildPlayer(Player.Listener)} 换成 AliPlayer 的适配
+ * 实现，其余代码不用动；同时在 app/libs 放入 AliPlayer AAR，并补上 LicenseManager 的
+ * AK 初始化。
  */
 @UnstableApi
 public class AliPlayerEngine implements PlayerEngine {
@@ -151,7 +151,7 @@ public class AliPlayerEngine implements PlayerEngine {
 
     /**
      * 播放器实例工厂。接入阿里官方 SDK 时把这里换成 AliPlayer 的适配实现即可，
-     * 必须保证返回值仍满足 media3 的 {@link Player} 契约，其余代码无需改动。
+     * 必须保证返回值仍满足 media3 的 Player 契约，其余代码无需改动。
      */
     private SystemSimplePlayer buildPlayer(Player.Listener listener) {
         SystemSimplePlayer player = new SystemSimplePlayer();
